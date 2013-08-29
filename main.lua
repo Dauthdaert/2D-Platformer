@@ -51,36 +51,36 @@ function love.draw()
 end
 
 function love.update(dt)
-	fps = love.timer.getFPS()
-	if dt > 0.05 then
-		dt = 0.02
-		print("" .. dt .. "")
-	end
-	if gamestate == "paused" then
-		return end
-	if love.keyboard.isDown("d") then
-		Ddown = true
-		if Adown == true then 
-			Adown = false
-			print("A was down")
+		fps = love.timer.getFPS()
+		if dt > 0.05 then
+			dt = 0.02
+			print("" .. dt .. "")
 		end
-		player:right(dt)
-	end
-	if love.keyboard.isDown("a") then
-		Adown = true
-		if Ddown == true then 
-			Ddown = false
+		if gamestate == "paused" then
+			return end
+		if love.keyboard.isDown("d") then
+			Ddown = true
+			if Adown == true then 
+				Adown = false
+				print("A was down")
+			end
+			player:right(dt)
 		end
-		player:left(dt)
-	end
-	if love.keyboard.isDown(" ") and not(hasJumped) then
-		player:jump(dt)
-	end
-	if love.keyboard.isDown("f3") then
-		print("FPS:" .. fps .. "")
-	end
-	player:update(dt)
-	camera:setPosition( player.x - (WindowWidth/2), player.y - (WindowHeight/2))
+		if love.keyboard.isDown("a") then
+			Adown = true
+			if Ddown == true then 
+				Ddown = false
+			end
+			player:left(dt)
+		end
+		if love.keyboard.isDown(" ") and not(hasJumped) then
+			player:jump(dt)
+		end
+		if love.keyboard.isDown("f3") then
+			print("FPS:" .. fps .. "")
+		end
+		player:update(dt)
+		camera:setPosition( player.x - (WindowWidth/2), player.y - (WindowHeight/2))
 
 end
 
