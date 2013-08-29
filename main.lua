@@ -43,45 +43,36 @@ function love.draw()
 		love.graphics.draw(ImageMenu, 0, 0, 0, 1, 1, 0, 0)
 		button_draw()
 	elseif gamestate == "paused" then
-		love.graphics.setColor( 180, 180, 180)
+		love.graphics.setColor( 255, 255, 255)
 		love.graphics.draw(ImageMenu, 0, 0, 0, 1, 1, 0, 0)
 		button_draw()
 	end
-	love.graphics.setColor(255, 255, 255, 255)
 end
 
 function love.update(dt)
 	fps = love.timer.getFPS()
 	if dt > 0.05 then
 		dt = 0.02
-		print("" .. dt .. "")
 	end
 	if gamestate == "paused" then
 		return end
 	if love.keyboard.isDown("d") then
 		Ddown = true
-		if Adown == true then 
-			Adown = false
-			print("A was down")
-		end
 		player:right(dt)
 	end
 	if love.keyboard.isDown("a") then
 		Adown = true
-		if Ddown == true then 
-			Ddown = false
-		end
 		player:left(dt)
 	end
 	if love.keyboard.isDown(" ") and not(hasJumped) then
 		player:jump(dt)
 	end
 	if love.keyboard.isDown("f3") then
+		debug = true
 		print("FPS:" .. fps .. "")
 	end
 	player:update(dt)
 	camera:setPosition( player.x - (WindowWidth/2), player.y - (WindowHeight/2))
-
 end
 
 
@@ -96,13 +87,6 @@ function love.keyreleased(key)
 	if key == "d" then
 		Ddown = false
 		lastKey = "d"
-	end
-	if key == " " then
-		if lastKey == "d" then
-			Ddown = true
-		elseif lastKey =="a" then
-			Adown = true
-		end
 	end
 end
 
@@ -119,4 +103,23 @@ function love.mousepressed(x, y)
 end
 
 function love.keypressed(key)
+	if key == "d" then
+		if Adown == true then 
+			Adown = false
+			print("A was down")
+		end
+	end
+	if key == "a" then
+		if Ddown == true then 
+			Ddown = false
+			print("D was down")
+		end
+	end
+	if key == " " then
+		if lastKey == "d" then
+			Ddown = true
+		elseif lastKey =="a" then
+			Adown = true
+		end
+	end
 end
