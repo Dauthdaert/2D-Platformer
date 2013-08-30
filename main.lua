@@ -59,10 +59,18 @@ function love.update(dt)
 	if love.keyboard.isDown("d") then
 		Ddown = true
 		player:right(dt)
+		if Adown then
+			Adown = false
+			lastKey = "a"
+		end
 	end
 	if love.keyboard.isDown("a") then
 		Adown = true
 		player:left(dt)
+		if Ddown then
+			Ddown = false
+			lastKey = "d"
+		end
 	end
 	if love.keyboard.isDown(" ") and not(hasJumped) then
 		player:jump(dt)
@@ -80,14 +88,6 @@ function love.keyreleased(key)
 	if (key == "a") or (key == "d") then
 		player.x_vel = 1
 	end
-	if key == "a" then 
-		Adown = false
-		lastKey = "a"
-	end
-	if key == "d" then
-		Ddown = false
-		lastKey = "d"
-	end
 end
 
 function love.focus(f)--used for auto pause    
@@ -104,13 +104,12 @@ end
 
 function love.keypressed(key)
 	if key == "d" then
-		if Adown == true then 
+		if Adown then 
 			Adown = false
 			print("A was down")
 		end
-	end
-	if key == "a" then
-		if Ddown == true then 
+	elseif key == "a" then
+		if Ddown then 
 			Ddown = false
 			print("D was down")
 		end
