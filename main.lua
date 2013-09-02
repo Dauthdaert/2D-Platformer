@@ -4,14 +4,19 @@ require("menu")
 require("player")
 require("ANal")
 
-function love.load()
+math.randomseed(os.time())
+math.random()
+math.random()
+math.random()
+
+function love.load(args)
 	--Window Dimesions
 	WindowHeight = love.graphics.getHeight()
 	WindowWidth = love.graphics.getWidth()
 	--Initial Loading
 	MenuFont = love.graphics.newFont("textures/Assasin.ttf", 24)
 	love.graphics.setBackgroundColor( 255, 255, 255)
-	ImageBackground = love.graphics.newImage("textures/background.png")
+	ImageBackgroundLev1 = love.graphics.newImage("textures/background.png")
 	ImageMenu = love.graphics.newImage("textures/MenuImageBrown.jpg")
 	gamestate = "menu"
 	--Maps
@@ -26,17 +31,36 @@ function love.load()
 		button_spawn( WindowWidth - WindowWidth / 10, 0, "Pause", "playingpause")
 		button_spawn(WindowWidth / 2 - WindowWidth / 16, WindowHeight / 3, "Resume", "pauseplaying")
 	--Player
-	
+	--Parralax Settings
+	camera.layers = {}
+	camera.layers = {}
+  
+	for i = .5, 3, .5 do
+		local rectangles = {}
+    
+    	for j = 1, math.random(2, 15) do
+   			table.insert(rectangles, {
+    		math.random(0, 1600),
+    		math.random(0, 1600),
+   			math.random(50, 400),
+			math.random(50, 400),
+    		color = { math.random(0, 255), math.random(0, 255), math.random(0, 255) }
+			})
+		end
+    
+    	camera:newLayer(i, function()
+    		for _, v in ipairs(rectangles) do
+    			love.graphics.setColor(v.color)
+    			love.graphics.rectangle('fill', unpack(v))
+    			love.graphics.setColor(255, 255, 255)
+    		end
+		end)
+	end
 end
 
 function love.draw()
 	if gamestate == "playing" then
-		camera:set()
-		love.graphics.setColor( 255, 255, 255 )
-		love.graphics.draw(ImageBackground, 0, 0, 0, 1, 1, 0, 0)
-		player:draw()
-		map:draw()
-		camera:unset()
+		camera:draw()
 		button_draw()
 	elseif gamestate == "menu" then
 		love.graphics.setColor( 255, 255, 255 )

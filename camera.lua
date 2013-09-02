@@ -1,4 +1,5 @@
 camera = {}
+camera.layers = {}
 camera.x = 0
 camera.y = 0
 camera.sx = 1
@@ -14,6 +15,11 @@ end
 
 function camera:unset()
   love.graphics.pop()
+end
+
+function camera:newLayer(scale, func)
+  table.insert(self.layers, { draw = func, scale = scale })
+  table.sort(self.layers, function(a, b) return a.scale < b.scale end)
 end
 
 function camera:rotate(dr)
@@ -68,4 +74,18 @@ end
 
 function math.clamp(x, min, max)
   return x < min and min or (x > max and max or x)
+end
+
+function camera:draw()
+  local bx, by = self.x, self.y
+  
+  for _, v in ipairs(self.layers) do
+    self._x = bx * v.scale
+    self._y = by * v.scale
+    camera:set()
+    player:draw()
+    map:draw()
+    v.draw()
+    camera:unset()
+  end
 end
