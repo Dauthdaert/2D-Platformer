@@ -1,5 +1,4 @@
 
-
 button = {}
 
 function button_spawn(x, y, text, id)
