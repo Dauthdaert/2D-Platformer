@@ -28,7 +28,6 @@ local LRestAnim = love.graphics.newImage("textures/Animations/WarriorLRest.png")
 				h = 32, 
 				w = 32,
 				standing = false,
-				health = 100,
 				}
 	function player:jump()
 		if self.standing then
@@ -54,7 +53,6 @@ local LRestAnim = love.graphics.newImage("textures/Animations/WarriorLRest.png")
 	function player:collide(event)
 		if event == "floor" then
 			self.y_vel = 0 
-			--player.health = player.health - 1
 			self.standing = true
 		end
 		if event == "cieling" then
@@ -153,5 +151,4 @@ local LRestAnim = love.graphics.newImage("textures/Animations/WarriorLRest.png")
 		elseif Adown then
 			WarriorLAnim:draw( player.x - player.w/2, player.y - player.h/2)
 		end
-	print("" .. player.health .. "")
 	end

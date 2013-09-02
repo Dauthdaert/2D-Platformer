@@ -1,3 +1,4 @@
+require("cupid")
 function love.conf(t)
 	t.modules.joystick = true
 	t.modules.audio = true
