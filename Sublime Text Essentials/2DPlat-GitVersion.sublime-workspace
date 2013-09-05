@@ -63,15 +63,7 @@
 			"file": "/C/Users/Wayan/Documents/GitHub/2D-Platformer/main.lua",
 			"settings":
 			{
-				"buffer_size": 3562,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/C/Users/Wayan/Documents/GitHub/2D-Platformer/camera.lua",
-			"settings":
-			{
-				"buffer_size": 1778,
+				"buffer_size": 3582,
 				"line_ending": "Windows"
 			}
 		}
@@ -120,6 +112,8 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Wayan/Documents/GitHub/2D-Platformer/camera.lua",
+		"/C/Users/Wayan/Documents/GitHub/2D-Platformer/player.lua",
 		"/C/Users/Wayan/AppData/Local/Temp/Temp1_spiral_alpha_0.21.zip/main.lua",
 		"/C/Users/Wayan/AppData/Local/Temp/Temp1_spiral_alpha_0.21.zip/game.lua",
 		"/C/Users/Wayan/AppData/Local/Temp/Temp1_spiral_alpha_0.21.zip/lib/camera.lua",
@@ -135,7 +129,6 @@
 		"/C/Users/Wayan/Documents/Lua Progs/Librairies/Math.Additional.lua",
 		"/C/Users/Wayan/Documents/Lua Progs/Librairies/hs2.lua",
 		"/C/Users/Wayan/Documents/Lua Progs/2D-Platformer/camera.lua",
-		"/C/Users/Wayan/Documents/GitHub/2D-Platformer/player.lua",
 		"/C/Users/Wayan/Documents/Lua Progs/Librairies/TiledMapLoader.lua",
 		"/C/Users/Wayan/Documents/Lua Progs/examples/Physics Testing/main.lua",
 		"/C/Users/Wayan/Documents/Lua Progs/2D-Platformer/conf.lua",
@@ -224,15 +217,15 @@
 					"file": "/C/Users/Wayan/Documents/GitHub/2D-Platformer/main.lua",
 					"settings":
 					{
-						"buffer_size": 3562,
+						"buffer_size": 3582,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1401,
-								1401
+								1708,
+								1708
 							]
 						],
 						"settings":
@@ -241,35 +234,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 570.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/C/Users/Wayan/Documents/GitHub/2D-Platformer/camera.lua",
-					"settings":
-					{
-						"buffer_size": 1778,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1282,
-								1282
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 912.0,
+						"translation.y": 513.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -341,6 +306,6 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 285.0,
+	"side_bar_width": 152.0,
 	"status_bar_visible": true
 }
