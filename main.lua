@@ -33,7 +33,6 @@ function love.load(args)
 	--Player
 	--Parralax Settings
 	camera.layers = {}
-	camera.layers = {}
   
 	for i = .5, 3, .5 do
 		local rectangles = {}
@@ -74,7 +73,6 @@ function love.draw()
 end
 
 function love.update(dt)
-	fps = love.timer.getFPS()
 	if dt > 0.05 then
 		dt = 0.02
 	end
@@ -101,6 +99,7 @@ function love.update(dt)
 	end
 	if love.keyboard.isDown("f3") then
 		debug = true
+		local fps = love.timer.getFPS()
 		print("FPS:" .. fps .. "")
 	end
 	player:update(dt)
@@ -127,17 +126,17 @@ function love.mousepressed(x, y)
 end
 
 function love.keypressed(key)
-	if key == "d" then
-		if Adown then 
-			Adown = false
-			print("A was down")
-		end
-	elseif key == "a" then
-		if Ddown then 
-			Ddown = false
-			print("D was down")
-		end
-	end
+	-- if key == "d" then
+	-- 	if Adown then 
+	-- 		Adown = false
+	-- 		print("A was down")
+	-- 	end
+	-- elseif key == "a" then
+	-- 	if Ddown then 
+	-- 		Ddown = false
+	-- 		print("D was down")
+	-- 	end
+	-- end
 	if key == " " then
 		if lastKey == "d" then
 			Ddown = true
