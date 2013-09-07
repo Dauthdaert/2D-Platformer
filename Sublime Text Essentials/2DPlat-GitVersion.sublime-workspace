@@ -59,14 +59,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "/C/Users/Wayan/Documents/GitHub/2D-Platformer/main.lua",
-			"settings":
-			{
-				"buffer_size": 3582,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -112,6 +104,9 @@
 	},
 	"file_history":
 	[
+		"/C/Users/Wayan/Documents/Wayan Gwie/Francais/Acrostiche.txt",
+		"/C/Users/Wayan/Documents/Wayan Gwie/Francais/French work.txt",
+		"/C/Users/Wayan/Documents/GitHub/2D-Platformer/main.lua",
 		"/C/Users/Wayan/Documents/GitHub/2D-Platformer/camera.lua",
 		"/C/Users/Wayan/Documents/GitHub/2D-Platformer/player.lua",
 		"/C/Users/Wayan/AppData/Local/Temp/Temp1_spiral_alpha_0.21.zip/main.lua",
@@ -123,7 +118,6 @@
 		"/C/Users/Wayan/Documents/Lua Progs/2D-Platformer/main.lua",
 		"/C/Users/Wayan/Documents/GitHub/2D-Platformer/play.bat",
 		"/C/Users/Wayan/Documents/Lua Progs/Projects/2D Plaformer.sublime-project",
-		"/C/Users/Wayan/Documents/GitHub/2D-Platformer/main.lua",
 		"/C/Users/Wayan/Documents/Lua Progs/2D-Platformer/.gitattributes",
 		"/C/Users/Wayan/Documents/Lua Progs/Librairies/Cupid-Debug/cupid.lua",
 		"/C/Users/Wayan/Documents/Lua Progs/Librairies/Math.Additional.lua",
@@ -209,36 +203,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "/C/Users/Wayan/Documents/GitHub/2D-Platformer/main.lua",
-					"settings":
-					{
-						"buffer_size": 3582,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1708,
-								1708
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Lua/Lua.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 513.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],
