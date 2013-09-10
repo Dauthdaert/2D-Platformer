@@ -1,4 +1,4 @@
-require("cupid")
+require("libs/cupid")
 function love.conf(t)
 	t.modules.joystick = true
 	t.modules.audio = true
@@ -14,6 +14,7 @@ function love.conf(t)
 	t.console = true
 	t.title = "Platformer"
 	t.author = "Wayan"
+	t.identity = "Space Fly"
 	t.screen.fullscreen = false
 	t.screen.vsync = false
 	t.screen.fsaa = 0
