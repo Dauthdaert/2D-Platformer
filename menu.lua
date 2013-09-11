@@ -11,19 +11,13 @@ function button_draw()
 		if gamestate == "menu" then
 			if v.id == "start" then
 				love.graphics.rectangle("fill", WindowWidth / 2 - WindowWidth / 15, WindowHeight / 3, MenuFont:getWidth(v.text)*1.5, MenuFont:getHeight(v.text))
-			end
-			if v.id == "quit" then
+			elseif v.id == "quit" then
 				love.graphics.rectangle("fill", WindowWidth / 2 - WindowWidth / 15+ 10, WindowHeight / 3 * 2, MenuFont:getWidth(v.text)*1.5,MenuFont:getHeight(v.text))
 			end
-		--elseif gamestate == "playing" then
-			--if v.id == "playingpause" then
-				--love.graphics.rectangle("fill", WindowWidth - WindowWidth / 10, 0, WindowWidth / 10, WindowHeight / 20)
-			--end
 		elseif gamestate == "paused" then
 			if v.id == "pauseplaying" then
 				love.graphics.rectangle("fill", WindowWidth / 2 - WindowWidth / 13, WindowHeight / 3, MenuFont:getWidth(v.text)*1.3, MenuFont:getHeight(v.text))
-			end
-			if v.id == "quit" then
+			elseif v.id == "quit" then
 				love.graphics.rectangle("fill", WindowWidth / 2 - WindowWidth / 15 + 10, WindowHeight / 3 * 2, MenuFont:getWidth(v.text)*1.5, MenuFont:getHeight(v.text))
 			end
 		end
