@@ -21,7 +21,26 @@ function love.load(args)
 	gamestate = "menu"
 	--Initial Loading(Savegames and Configs)
 	local filepresent = love.filesystem.enumerate(love.filesystem.getSaveDirectory())
-	
+	local savedirpresent = love.filesystem.exists("savegames")
+		if not savedirpresent then
+			love.filesystem.mkdir("savegames")
+		end
+	local configdirpresent = love.filesystem.exists("Config")
+		if not savedirpresent then
+			love.filesystem.mkdir("Config")
+		end
+	local savepresent = love.filesystem.exists("savegames/save.txt")
+	print(savepresent)
+	lvlstate = "lvl1"
+	bitsize = 4
+		if not savepresent then
+			love.filesystem.write( "savegames/save.txt", "" .. lvlstate .. "", bitsize)
+			print("Save not present")
+		elseif savepresent then
+			savecontent, savebitsize = love.filesystem.read("savegames/save.txt")
+			print("" .. savecontent .. "")
+			print("" .. savebitsize .. "")
+		end
 	--Maps
 	AdvTiledLoader.path = "textures/maps/"
 	map = AdvTiledLoader.load("map.tmx")
