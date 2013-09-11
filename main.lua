@@ -2,6 +2,7 @@ local AdvTiledLoader = require("AdvTiledLoader.Loader")
 require("camera")
 require("menu")
 require("player")
+require("FileManagement")
 require("libs/ANal")
 
 math.randomseed(os.time())
@@ -20,27 +21,7 @@ function love.load(args)
 	ImageMenu = love.graphics.newImage("textures/MenuImageBrown.jpg")
 	gamestate = "menu"
 	--Initial Loading(Savegames and Configs)
-	local filepresent = love.filesystem.enumerate(love.filesystem.getSaveDirectory())
-	local savedirpresent = love.filesystem.exists("savegames")
-		if not savedirpresent then
-			love.filesystem.mkdir("savegames")
-		end
-	local configdirpresent = love.filesystem.exists("Config")
-		if not savedirpresent then
-			love.filesystem.mkdir("Config")
-		end
-	local savepresent = love.filesystem.exists("savegames/save.txt")
-	print(savepresent)
-	lvlstate = "lvl1"
-	bitsize = 4
-		if not savepresent then
-			love.filesystem.write( "savegames/save.txt", "" .. lvlstate .. "", bitsize)
-			print("Save not present")
-		elseif savepresent then
-			savecontent, savebitsize = love.filesystem.read("savegames/save.txt")
-			print("" .. savecontent .. "")
-			print("" .. savebitsize .. "")
-		end
+	File.load()
 	--Maps
 	AdvTiledLoader.path = "textures/maps/"
 	map = AdvTiledLoader.load("map.tmx")
@@ -52,6 +33,7 @@ function love.load(args)
 		button_spawn(WindowWidth / 2 - WindowWidth / 20 + 5, WindowHeight / 3 * 2, "Quit", "quit")
 		button_spawn( WindowWidth - WindowWidth / 10, 0, "Pause", "playingpause")
 		button_spawn(WindowWidth / 2 - WindowWidth / 16, WindowHeight / 3, "Resume", "pauseplaying")
+		button_spawn()
 	--Player
 	--Parralax Settings
 	camera.layers = {}
@@ -165,4 +147,8 @@ function love.keypressed(key)
 			Adown = true
 		end
 	end
+end
+
+function love.quit()
+	File.quit()
 end
