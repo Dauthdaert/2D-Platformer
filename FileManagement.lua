@@ -16,7 +16,7 @@ function File.load()
 	print(configpresent)
 	lvlstate = "lvl1"
 	savebitsize = 4
-	BaseConfig = "lvl1"
+	local BaseConfig = "lvl1"
 	configbitsize = 4
 		if not savepresent then
 			love.filesystem.write( "savegames/save.txt", "" .. lvlstate .. "", savebitsize)
