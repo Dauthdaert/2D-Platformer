@@ -2,6 +2,7 @@ File = {}
 
 function File.load()
 	local filepresent = love.filesystem.enumerate(love.filesystem.getSaveDirectory())
+	print("" .. love.filesystem.getSaveDirectory() .. "")
 	local savedirpresent = love.filesystem.exists("savegames")
 		if not savedirpresent then
 			love.filesystem.mkdir("savegames")
