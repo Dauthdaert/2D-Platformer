@@ -31,9 +31,10 @@ function love.load(args)
 		--Buttons
 		button_spawn(WindowWidth / 2 - WindowWidth / 20, WindowHeight / 3, "Start", "start")
 		button_spawn(WindowWidth / 2 - WindowWidth / 20 + 5, WindowHeight / 3 * 2, "Quit", "quit")
-		button_spawn( WindowWidth - WindowWidth / 10, 0, "Pause", "playingpause")
+		button_spawn(WindowWidth - WindowWidth / 10, 0, "Pause", "playingpause")
 		button_spawn(WindowWidth / 2 - WindowWidth / 16, WindowHeight / 3, "Resume", "pauseplaying")
-		button_spawn()
+		button_spawn(0, 0, "Options", "options")
+		button_spawn(WindowWidth / 2 - WindowWidth / 20, WindowHeight / 3, "Config", "configupdate")
 	--Player
 	--Parralax Settings
 	camera.layers = {}
@@ -73,6 +74,10 @@ function love.draw()
 		button_draw()
 	--Paused Menu Draw
 	elseif gamestate == "paused" then
+		love.graphics.setColor( 255, 255, 255)
+		love.graphics.draw(ImageMenu, 0, 0, 0, 1, 1, 0, 0)
+		button_draw()
+	elseif gamestate == "options" then
 		love.graphics.setColor( 255, 255, 255)
 		love.graphics.draw(ImageMenu, 0, 0, 0, 1, 1, 0, 0)
 		button_draw()

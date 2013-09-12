@@ -16,8 +16,8 @@ function File.load()
 	print(configpresent)
 	lvlstate = "lvl1"
 	savebitsize = 4
-	local BaseConfig = "lvl1"
-	configbitsize = 4
+	Config = "Placeholder"
+	configbitsize = 9
 		if not savepresent then
 			love.filesystem.write( "savegames/save.txt", "" .. lvlstate .. "", savebitsize)
 			print("Save not present")
@@ -27,22 +27,26 @@ function File.load()
 			print("" .. savebitsize .. "")
 		end
 		if not configpresent then
-			love.filesystem.write( "Config/config.txt", "" .. BaseConfig .. "", configbitsize)
+			love.filesystem.write( "Config/config.txt", "" .. Config .. "", configbitsize)
 			print("Config not present")
 		elseif configpresent then
 			configcontent, configbitsize = love.filesystem.read("Config/config.txt")
+			Config = "" .. configcontent .. ""
+			configbitsize = 100
 			print("" .. configcontent .. "")
 			print("" .. configbitsize .. "")
 		end
 end
 
 function File.Update()
-
+	Config = "Placeholder"
 end
 
 function File.quit()
 	savebitsize = savebitsize
+	love.filesystem.remove("save")
 	love.filesystem.write( "savegames/save.txt", "" .. lvlstate .. "", savebitsize)
 	configbitsize = configbitsize
-	love.filesystem.write( "Config/config.txt", "" .. UpdatedConfig .. "", configbitsize)
+	love.filesystem.remove("config")
+	love.filesystem.write( "Config/config.txt", "" .. Config .. "", configbitsize)
 end

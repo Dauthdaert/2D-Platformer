@@ -13,12 +13,16 @@ function button_draw()
 				love.graphics.rectangle("fill", WindowWidth / 2 - WindowWidth / 15, WindowHeight / 3, MenuFont:getWidth(v.text)*1.5, MenuFont:getHeight(v.text))
 			elseif v.id == "quit" then
 				love.graphics.rectangle("fill", WindowWidth / 2 - WindowWidth / 15+ 10, WindowHeight / 3 * 2, MenuFont:getWidth(v.text)*1.5,MenuFont:getHeight(v.text))
+			elseif v.id == "options" then
+				love.graphics.rectangle("fill", 0, 0, MenuFont:getWidth(v.text)*1.5,MenuFont:getHeight(v.text))
 			end
 		elseif gamestate == "paused" then
 			if v.id == "pauseplaying" then
 				love.graphics.rectangle("fill", WindowWidth / 2 - WindowWidth / 13, WindowHeight / 3, MenuFont:getWidth(v.text)*1.3, MenuFont:getHeight(v.text))
 			elseif v.id == "quit" then
 				love.graphics.rectangle("fill", WindowWidth / 2 - WindowWidth / 15 + 10, WindowHeight / 3 * 2, MenuFont:getWidth(v.text)*1.5, MenuFont:getHeight(v.text))
+			elseif v.id == "options" then
+				love.graphics.rectangle("fill", 0, 0, MenuFont:getWidth(v.text)*1.5,MenuFont:getHeight(v.text))
 			end
 		end
 		love.graphics.setColor( 0, 0, 0)
@@ -33,6 +37,10 @@ function button_draw()
 			love.graphics.print(v.text, v.x, v.y)
 		elseif v.id == "quit" and gamestate == "paused" then
 			love.graphics.print(v.text, v.x, v.y)
+		elseif v.id == "options" and gamestate == "menu" or gamestate == "paused" then
+			love.graphics.print(v.text, v.x, v.y)
+		elseif v.id == "configupdate" and gamestate == "options" then
+			love.graphics.print(v.text, v.x, v.y)
 		end
 	end
 end
@@ -45,24 +53,25 @@ function button_click(x, y)
 		 y < v.y + MenuFont:getHeight(v.text) then
 		 	if gamestate == "menu" then
 		 		if v.id == "quit" then
-		 		love.event.push("quit")
+		 			love.event.push("quit")
 		 		elseif v.id == "start" then
-		 		gamestate = "playing"
+		 			gamestate = "playing"
+		 		elseif v.id == "options" then
+		 			gamestate = "options"
 		 		end
 		 	end
 		 	if gamestate == "playing" then
 		 		if v.id == "playingpause" then
-		 		gamestate = "paused"
+		 			gamestate = "paused"
 		 		end
 		 	end
 		 	if gamestate == "paused" then
 		 		if v.id == "pauseplaying" then
-		 		gamestate = "playing"
-		 		end
-			end
-			if gamestate == "paused" then
-		 		if v.id == "quit" then
-		 		love.event.push("quit")
+		 			gamestate = "playing"
+		 		elseif v.id == "quit" then
+		 			love.event.push("quit")
+				elseif v.id == "options" then
+					gamestate = "options"
 				end
 			end
 		end
