@@ -1,4 +1,4 @@
-require("camera")
+require("Ancilliary/camera")
 require("libs/ANal")
 local AdvTiledLoader = require("AdvTiledLoader.Loader")
 player = {}

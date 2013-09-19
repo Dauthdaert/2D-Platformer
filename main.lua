@@ -1,8 +1,9 @@
 local AdvTiledLoader = require("AdvTiledLoader.Loader")
-require("camera")
-require("menu")
-require("player")
-require("FileManagement")
+require("Ancilliary/camera")
+require("Ancilliary/menu")
+require("Ancilliary/player")
+require("Ancilliary/FileManagement")
+require("Ancilliary/ImageManagement")
 require("libs/ANal")
 
 math.randomseed(os.time())
@@ -11,17 +12,24 @@ math.random()
 math.random()
 
 function love.load(args)
+	--Coroutine Making
+	local FileLoadCo = coroutine.create(File.load)
+	print("" .. coroutine.status(FileLoadCo).. "")
+	local ImageLoadCo = coroutine.create(Image.load)
+	print("" .. coroutine.status(ImageLoadCo).. "")
+	local FontLoadCo = coroutine.create(Font.load)
+	print("" .. coroutine.status(FontLoadCo).. "")
+	FileQuitCo = coroutine.create(File.quit)
+	print("" .. coroutine.status(FileQuitCo).. "")
 	--Window Dimesions
 	WindowHeight = love.graphics.getHeight()
 	WindowWidth = love.graphics.getWidth()
 	--Initial Loading(Images and Fonts)
-	MenuFont = love.graphics.newFont("textures/Fonts/Assasin.ttf", 24)
-	love.graphics.setBackgroundColor( 255, 255, 255)
-	ImageBackgroundLev1 = love.graphics.newImage("textures/background.png")
-	ImageMenu = love.graphics.newImage("textures/MenuImageBrown.jpg")
+	coroutine.resume(ImageLoadCo)
+	coroutine.resume(FontLoadCo)
 	gamestate = "menu"
 	--Initial Loading(Savegames and Configs)
-	File.load()
+	coroutine.resume(FileLoadCo)
 	--Maps
 	AdvTiledLoader.path = "textures/maps/"
 	map = AdvTiledLoader.load("map.tmx")
@@ -155,5 +163,5 @@ function love.keypressed(key)
 end
 
 function love.quit()
-	File.quit()
+	coroutine.resume(FileQuitCo)
 end
