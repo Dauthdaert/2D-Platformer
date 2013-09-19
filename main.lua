@@ -21,6 +21,8 @@ function love.load(args)
 	print("" .. coroutine.status(FontLoadCo).. "")
 	FileQuitCo = coroutine.create(File.quit)
 	print("" .. coroutine.status(FileQuitCo).. "")
+	local ButtonSpawnCo = coroutine.create(button.define)
+	print("" .. coroutine.status(ButtonSpawnCo).. "")
 	--Window Dimesions
 	WindowHeight = love.graphics.getHeight()
 	WindowWidth = love.graphics.getWidth()
@@ -37,12 +39,7 @@ function love.load(args)
 	camera:setBounds(0, 0, map.width * map.tileWidth - love.graphics.getWidth(), map.height * map.tileHeight - love.graphics.getHeight() )
 	--Menu
 		--Buttons
-		button_spawn(WindowWidth / 2 - WindowWidth / 20, WindowHeight / 3, "Start", "start")
-		button_spawn(WindowWidth / 2 - WindowWidth / 20 + 5, WindowHeight / 3 * 2, "Quit", "quit")
-		button_spawn(WindowWidth - WindowWidth / 10, 0, "Pause", "playingpause")
-		button_spawn(WindowWidth / 2 - WindowWidth / 16, WindowHeight / 3, "Resume", "pauseplaying")
-		button_spawn(0, 0, "Options", "options")
-		button_spawn(WindowWidth / 2 - WindowWidth / 20, WindowHeight / 3, "Config", "configupdate")
+		coroutine.resume(ButtonSpawnCo)
 	--Player
 	--Parralax Settings
 	camera.layers = {}

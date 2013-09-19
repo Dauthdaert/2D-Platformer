@@ -5,6 +5,15 @@ function button_spawn(x, y, text, id)
 	table.insert(button, {x = x, y = y, text = text, id = id})
 end
 
+function button.define()
+	button_spawn(WindowWidth / 2 - WindowWidth / 20, WindowHeight / 3, "Start", "start")
+	button_spawn(WindowWidth / 2 - WindowWidth / 20 + 5, WindowHeight / 3 * 2, "Quit", "quit")
+	button_spawn(WindowWidth - WindowWidth / 10, 0, "Pause", "playingpause")
+	button_spawn(WindowWidth / 2 - WindowWidth / 16, WindowHeight / 3, "Resume", "pauseplaying")
+	button_spawn(0, 0, "Options", "options")
+	button_spawn(WindowWidth / 2 - WindowWidth / 20, WindowHeight / 3 * 3, "Config", "configupdate")
+end
+
 function button_draw()
 	for i,v in ipairs(button) do
 		love.graphics.setColor( 77, 81, 68)
