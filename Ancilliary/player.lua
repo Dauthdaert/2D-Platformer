@@ -1,6 +1,6 @@
 require("Ancilliary/camera")
 require("libs/ANal")
-local AdvTiledLoader = require("AdvTiledLoader.Loader")
+local AdvTiledLoader = require("libs/AdvTiledLoader.Loader")
 player = {}
 
 

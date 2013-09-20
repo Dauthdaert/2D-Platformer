@@ -1,4 +1,4 @@
-local AdvTiledLoader = require("AdvTiledLoader.Loader")
+local AdvTiledLoader = require("libs/AdvTiledLoader.Loader")
 require("Ancilliary/camera")
 require("Ancilliary/menu")
 require("Ancilliary/player")
@@ -114,7 +114,7 @@ function love.update(dt)
 				lastKey = "d"
 			end
 		end
-		if love.keyboard.isDown(" ") and not(hasJumped) then
+		if love.keyboard.isDown(" ") and not hasJumped then
 			player:jump(dt)
 		end
 	--End Movement
