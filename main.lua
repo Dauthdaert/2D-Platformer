@@ -32,6 +32,9 @@ function love.load(args)
 	gamestate = "menu"
 	--Initial Loading(Savegames and Configs)
 	coroutine.resume(FileLoadCo)
+	--Folder Enum
+	filesString = recursiveEnumerate("", "")
+	print(filesString)
 	--Maps
 	AdvTiledLoader.path = "textures/maps/"
 	map = AdvTiledLoader.load("map.tmx")
@@ -65,6 +68,22 @@ function love.load(args)
 				end
 			end)
 		end
+end
+
+-- This function will return a string filetree of all files in the folder and files in all subfolders
+function recursiveEnumerate(folder, fileTree)
+    local lfs = love.filesystem
+    local filesTable = lfs.enumerate(folder)
+    for i,v in ipairs(filesTable) do
+        local file = folder.."/"..v
+        if lfs.isFile(file) then
+            fileTree = fileTree.."\n"..file
+        elseif lfs.isDirectory(file) then
+            fileTree = fileTree.."\n"..file.." (DIR)"
+            fileTree = recursiveEnumerate(file, fileTree)
+        end
+    end
+    return fileTree
 end
 
 function love.draw()

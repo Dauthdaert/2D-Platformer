@@ -2,13 +2,8 @@ File = {}
 
 function File.load()
 	--Dir Manip
-	local numbdone = 0
-	saveDir = love.filesystem.getSaveDirectory()
-	for i, v in ipairs(love.filesystem.enumerate(saveDir)) do
-		print(i, v)
-		numbdone = numbdone + 1
-		print("NumbDone:" .. numbdone)
-	end
+	local numbdone = 1
+	local saveDir = love.filesystem.getSaveDirectory()
 	print("" .. saveDir .. "")
 	--Save and Config Creation
 	local savedirpresent = love.filesystem.exists("savegames")
