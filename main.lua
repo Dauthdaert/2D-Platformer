@@ -14,15 +14,15 @@ math.random()
 function love.load(args)
 	--Coroutine Making
 	local FileLoadCo = coroutine.create(File.load)
-	print("" .. coroutine.status(FileLoadCo).. "")
+	--print("" .. coroutine.status(FileLoadCo).. "")
 	local ImageLoadCo = coroutine.create(Image.load)
-	print("" .. coroutine.status(ImageLoadCo).. "")
+	--print("" .. coroutine.status(ImageLoadCo).. "")
 	local FontLoadCo = coroutine.create(Font.load)
-	print("" .. coroutine.status(FontLoadCo).. "")
+	--print("" .. coroutine.status(FontLoadCo).. "")
 	FileQuitCo = coroutine.create(File.quit)
-	print("" .. coroutine.status(FileQuitCo).. "")
+	--print("" .. coroutine.status(FileQuitCo).. "")
 	local ButtonSpawnCo = coroutine.create(button.define)
-	print("" .. coroutine.status(ButtonSpawnCo).. "")
+	--print("" .. coroutine.status(ButtonSpawnCo).. "")
 	--Window Dimesions
 	WindowHeight = love.graphics.getHeight()
 	WindowWidth = love.graphics.getWidth()
@@ -140,8 +140,7 @@ function love.update(dt)
 	--Debug
 	if love.keyboard.isDown("f3") then
 		debug = true
-		local fps = love.timer.getFPS()
-		print("FPS:" .. fps .. "")
+		print("FPS:" .. love.timer.getFPS() .. "")
 	end
 	--Player and Camera Updates
 	player:update(dt)
